@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfoli personal de Júlia del Puerto Peix. Fotografia analògica, de viatge i projectes de programació.">
+    <title>Júlia del Puerto Peix | Portfoli</title>
+
+    <!-- Preconnexió als servidors de Google per millorar la velocitat de càrrega -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Importem Inter (tipografia de pal sec geomètrica) i Playfair Display (tipografia amb serifes elegant) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gloock&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Connexió amb els teus estils -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="tema-fosc page-home"> <!-- Podem gestionar el fons pur o grisos des d'aquí -->
+
+    <!-- Capçalera: Conté la identitat i la navegació principal minimalista -->
+    <header class="capcalera-principal">
+        <div class="tornar-inici">
+            <a href="/">&larr; Inici</a>
+        </div>
+
+        <nav class="navegacio-principal" aria-label="Navegació principal">
+            <ul>
+                <!-- Element pare amb submenú desplegable -->
+                <li class="element-amb-submenu">
+                    <a href="/galeria.html" class="etiqueta-menu" tabindex="0">Portfoli</a>
+                    <!-- Llista niada per al submenú -->
+                    <ul class="submenu" aria-label="Submenú de Portfoli">
+                        <li><a href="/galeria.html?categoria=analogic">Analògic</a></li>
+                        <li><a href="/galeria.html?categoria=de-viatge">De Viatge</a></li>
+                        <li><a href="/galeria.html?categoria=el-dia-a-dia">El dia a dia</a></li>
+                        <li><a href="/galeria.html?categoria=col-laboracions">Col·laboracions</a></li>
+                    </ul>
+                </li>
+                <li><a href="/sobre-mi.html">Sobre mi</a></li>
+                <li><a href="/contacte.html">Contacte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contingut central i únic de la pàgina -->
+    <main class="contingut-principal">
+        <!-- Portada d'impacte (Hero) -->
+        <section class="portada-hero">
+            <div class="portada-contingut">
+                <h1 class="titol-hero">A través dels meus ulls</h1>
+                <p class="subtitol-hero">Et dono la benvinguda a aquesta selecció de fotografia, espero que gaudeixis de
+                    la visita!</p>
+                <nav class="navegacio-portada">
+                    <a href="/galeria.html" class="enllac-portada">Portfoli</a>
+                    <span class="separador-portada">&mdash;</span>
+                    <a href="/sobre-mi.html" class="enllac-portada">Sobre mi</a>
+                    <span class="separador-portada">&mdash;</span>
+                    <a href="/contacte.html" class="enllac-portada">Contacte</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- Peu de pàgina -->
+    <footer class="peu-pagina">
+        <p>&copy; 2026 Júlia del Puerto Peix. Tots els drets reservats.</p>
+    </footer>
+
+</body>
+
+</html>

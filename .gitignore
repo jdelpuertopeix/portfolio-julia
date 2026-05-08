@@ -1,0 +1,15 @@
+# Fitxers d'Entorn (Variables Sensibles)
+.env
+.env.local
+.env.development
+.env.production
+
+# Mòduls de Node (si en el futur instal·lem el SDK de Supabase per npm)
+node_modules/
+
+# Arxius autogenerats pel Mac (si treballes amb Finder)
+.DS_Store
+
+# Arxius temporals o de cache
+.npminstall
+.npm/

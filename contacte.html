@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Posa't en contacte amb Júlia del Puerto Peix per a col·laboracions fotogràfiques o projectes web.">
+    <title>Júlia del Puerto Peix | Contacte</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="tema-fosc pàgina-institucional">
+
+    <!-- Capçalera Global -->
+    <header class="capcalera-principal">
+        <div class="tornar-inici">
+            <a href="/">&larr; Inici</a>
+        </div>
+
+        <nav class="navegacio-principal" aria-label="Navegació principal">
+            <ul>
+                <li class="element-amb-submenu">
+                    <a href="/galeria.html" class="etiqueta-menu" tabindex="0">Portfoli</a>
+                    <ul class="submenu" aria-label="Submenú de Portfoli">
+                        <li><a href="/galeria.html?categoria=analogic">Analògic</a></li>
+                        <li><a href="/galeria.html?categoria=de-viatge">De Viatge</a></li>
+                        <li><a href="/galeria.html?categoria=el-dia-a-dia">El dia a dia</a></li>
+                        <li><a href="/galeria.html?categoria=col-laboracions">Col·laboracions</a></li>
+                    </ul>
+                </li>
+                <li><a href="/sobre-mi.html">Sobre mi</a></li>
+                <li><a href="/contacte.html" class="actiu">Contacte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Formulari de Contacte -->
+    <main class="contingut-institucional">
+        <section class="seccio-contacte">
+            <div class="capcalera-contacte">
+                <h1 class="titol-sobre-mi">Parlem?</h1>
+                <p class="descripcio-contacte">Si estàs buscant documentar un projecte cultural, retratar la teva marca
+                    de forma autèntica, o vols col·laborar en un projecte web modern, serà un plaer llegir-te.</p>
+            </div>
+
+            <!-- 
+                Per utilitzar Formspree:
+                1. Registra't gratis a formspree.io
+                2. Crea un nou "Project" i un nou "Form" allà
+                3. Copia el codi (endpoint) que et donaran i canvia la paraula 'TEU_ID_FORMSPREE' del action
+            -->
+            <form action="https://formspree.io/f/TEU_ID_FORMSPREE" method="POST" class="formulari-base">
+                <div class="grup-form">
+                    <label for="nom">Nom sencer</label>
+                    <input type="text" id="nom" name="nom" required
+                        placeholder="El teu nom o el de la teva organització">
+                </div>
+
+                <div class="grup-form">
+                    <label for="email">Correu electrònic</label>
+                    <input type="email" id="email" name="email" required placeholder="on et puc respondre?">
+                </div>
+
+                <div class="grup-form">
+                    <label for="motiu">Motiu del missatge</label>
+                    <select id="motiu" name="motiu" required>
+                        <option value="" disabled selected>Selecciona una opció...</option>
+                        <option value="fotografia">Projecte Fotogràfic / Sessió</option>
+                        <option value="web">Projecte Desenvolupament Web</option>
+                        <option value="print">Impressió de Còpies Físiques</option>
+                        <option value="altres">Altres consultes</option>
+                    </select>
+                </div>
+
+                <div class="grup-form">
+                    <label for="missatge">El teu missatge</label>
+                    <textarea id="missatge" name="missatge" rows="6" required
+                        placeholder="Explica'm la teva idea amb detall..."></textarea>
+                </div>
+
+                <button type="submit" class="boto-primari">Enviar missatge</button>
+                <p class="nota-seguretat">Aquest formulari està protegit amb validació i rate limiting per evitar
+                    l'spam.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="peu-pagina">
+        <p>&copy; 2026 Júlia del Puerto Peix. Tots els drets reservats.</p>
+    </footer>
+
+</body>
+
+</html>

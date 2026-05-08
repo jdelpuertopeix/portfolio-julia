@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeria fotogràfica de Júlia del Puerto Peix.">
+    <title>Júlia del Puerto Peix | Galeria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="tema-fosc pàgina-galeria">
+
+    <!-- Capçalera Global -->
+    <header class="capcalera-principal">
+        <div class="tornar-inici">
+            <a href="/">&larr; Inici</a>
+        </div>
+
+        <nav class="navegacio-principal" aria-label="Navegació principal">
+            <ul>
+                <li class="element-amb-submenu">
+                    <a href="/galeria.html" class="etiqueta-menu actiu" tabindex="0">Portfoli</a>
+                    <ul class="submenu" aria-label="Submenú de Portfoli">
+                        <li><a href="/galeria.html?categoria=analogic">Analògic</a></li>
+                        <li><a href="/galeria.html?categoria=de-viatge">De Viatge</a></li>
+                        <li><a href="/galeria.html?categoria=el-dia-a-dia">El dia a dia</a></li>
+                        <li><a href="/galeria.html?categoria=col-laboracions">Col·laboracions</a></li>
+                    </ul>
+                </li>
+                <li><a href="/sobre-mi.html">Sobre mi</a></li>
+                <li><a href="/contacte.html">Contacte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contingut de la Galeria (Layout a 2 columnes) -->
+    <main class="layout-galeria">
+        <!-- Sidebar: Navegació secundària vertical -->
+        <aside class="sidebar-categories" aria-label="Navegació de categories d'imatges">
+            <nav>
+                <!-- Aquesta llista s'haurà de generar o destacar activament amb Javascript depenent de l'URL -->
+                <a href="galeria.html" class="btn-tornar">&larr; Torna a les col·leccions</a>
+                <details class="menu-mobil">
+                    <summary class="menu-desplegable">Col·leccions +</summary>
+                    <ul class="llista-categories">
+                        <li class="categoria-pare">
+                            <a href="?categoria=analogic" class="enllac-categoria">Analògic</a>
+                            <ul class="llista-subcategories">
+                                <li><a href="?categoria=analogic&album=monocrom">Monocrom</a></li>
+                                <li><a href="?categoria=analogic&album=color">Color</a></li>
+                            </ul>
+                        </li>
+                        <li class="categoria-pare">
+                            <a href="?categoria=de-viatge" class="enllac-categoria">De Viatge</a>
+                            <ul class="llista-subcategories">
+                                <li><a href="?categoria=de-viatge&album=ryukyu">Ryukyu</a></li>
+                                <li><a href="?categoria=de-viatge&album=japo">Japó</a></li>
+                                <li><a href="?categoria=de-viatge&album=filipines">Filipines</a></li>
+                                <li><a href="?categoria=de-viatge&album=taiwan">Taiwan</a></li>
+                                <li><a href="?categoria=de-viatge&album=shanghai">Shanghai</a></li>
+                                <li><a href="?categoria=de-viatge&album=escocia">Escòcia</a></li>
+                            </ul>
+                        </li>
+                        <li class="categoria-pare">
+                            <a href="?categoria=el-dia-a-dia" class="enllac-categoria">El dia a dia</a>
+                            <ul class="llista-subcategories">
+                                <li><a href="?categoria=el-dia-a-dia&album=2018">2018</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2019">2019</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2020">2020</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2021">2021</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2022">2022</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2023">2023</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2024">2024</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2025">2025</a></li>
+                                <li><a href="?categoria=el-dia-a-dia&album=2026">2026</a></li>
+                            </ul>
+                        </li>
+                        <li class="categoria-pare">
+                            <a href="?categoria=col-laboracions" class="enllac-categoria">Col·laboracions</a>
+                            <ul class="llista-subcategories">
+                                <li><a href="?categoria=col-laboracions&album=centre-tao">Centre Tao</a></li>
+                                <li><a href="?categoria=col-laboracions&album=teatre-centre">Teatre Centre</a></li>
+                                <li><a href="?categoria=col-laboracions&album=esbart-eudald-coma">Esbart Eudald Coma</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </details>
+            </nav>
+        </aside>
+
+        <!-- Zona Principal: Títol dinàmic i Graella Masonry -->
+        <section class="contingut-galeria">
+            <!-- Capçalera normal d'àlbums (amagat al Hub) -->
+            <header class="capcalera-seccio" id="capcalera-galeria">
+                <h1 id="titol-galeria" class="titol-seccio">Carregant Galeria...</h1>
+                <p id="descripcio-galeria" class="descripcio-seccio"></p>
+            </header>
+
+            <!-- Hub de categories (es mostra quan no hi ha paràmetres actius) -->
+            <div class="hub-container" id="hub-container">
+                <h1 class="titol-hub">Quina galeria vols explorar?</h1>
+                <div class="hub-categories" id="hub-categories">
+                    <a href="?categoria=analogic&album=monocrom" class="hub-card"
+                        style="background-image: url('https://dztvgrctmljpwxifmvoo.supabase.co/storage/v1/object/public/imatges-web/portfoli-fons-categories/01_fons_analogic.webp')"><span>Analògic</span></a>
+                    <a href="?categoria=de-viatge&album=ryukyu" class="hub-card"
+                        style="background-image: url('https://dztvgrctmljpwxifmvoo.supabase.co/storage/v1/object/public/imatges-web/portfoli-fons-categories/04_fons_de_viatge.webp')"><span>De
+                            Viatge</span></a>
+                    <a href="?categoria=el-dia-a-dia&album=2018" class="hub-card"
+                        style="background-image: url('https://dztvgrctmljpwxifmvoo.supabase.co/storage/v1/object/public/imatges-web/portfoli-fons-categories/03_fons_dia_a_dia.webp')"><span>El
+                            dia a dia</span></a>
+                    <a href="?categoria=col-laboracions&album=centre-tao" class="hub-card"
+                        style="background-image: url('https://dztvgrctmljpwxifmvoo.supabase.co/storage/v1/object/public/imatges-web/portfoli-fons-categories/02_fons_colaboracions.webp')"><span>Col·laboracions</span></a>
+                </div>
+            </div>
+
+            <!-- Contenidor on Javascript injectarà les imatges -->
+            <div id="masonry-grid" class="graella-masonry">
+                <!-- Exemple d'estructura interna d'una foto generada posteriorment -->
+                <!-- <div class="item-masonry">
+                        <img src="..." alt="..." loading="lazy" />
+                        <div class="overlay-hover">Títol de la foto</div>
+                     </div> -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="peu-pagina">
+        <p>&copy; 2026 Júlia del Puerto Peix. Tots els drets reservats.</p>
+    </footer>
+
+    <!-- Supabase SDK (Oficial de JS per CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Lògica de la pàgina de Galeria -->
+    <script src="./js/galeria.js"></script>
+</body>
+
+</html>
