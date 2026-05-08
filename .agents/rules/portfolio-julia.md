@@ -79,3 +79,10 @@ Tot i ser un portfoli, complirem amb les regles de seguretat globals del `GEMINI
 - **Codi net:** Escriu codi ben estructurat i amb comentaris HTML/CSS que m'ajudin a entendre què fa cada bloc.
 - **Ús d'eines autònomes:** Fes servir el teu navegador integrat de manera proactiva per visualitzar els canvis i assegurar-te que l'estètica visual respecta el disseny de les captures que tenim al projecte.
 - **Treball pas a pas:** Evita fer canvis massius a múltiples arxius alhora. Avancem secció per secció perquè jo pugui revisar, entendre i aprovar cada pas abans de continuar.
+
+# FLUX DE TREBALL DE GIT
+
+1. Treballar en la tasca assignada pas a pas.
+2. Després de cada millora visual o funcional validada, fer un commit amb un missatge descriptiu (preferiblement en anglès).
+3. Immediatament després del commit, fer un push a la branca main del repositori remot.
+4. Mantenir sempre el perfil de GitHub actiu amb aquests commits.
