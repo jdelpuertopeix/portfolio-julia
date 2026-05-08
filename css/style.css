@@ -410,6 +410,7 @@ main,
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    justify-content: center;
 }
 
 /* ==========================================================================
@@ -554,7 +555,7 @@ main,
 
 .hub-categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     width: 100%;
     gap: 2rem;
 }
@@ -643,6 +644,11 @@ main,
     /* Augmentem l'espai perquè hi hagi més 'aire' entre fotos grosses */
     width: 100%;
     min-height: 60vh;
+}
+
+/* Amaguem la graella quan som al Hub per evitar l'espai buit de 60vh */
+.layout-galeria.is-hub .graella-masonry {
+    display: none;
 }
 
 
