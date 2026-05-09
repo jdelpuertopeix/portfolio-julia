@@ -2,15 +2,15 @@
    VARIABLES GLOBALS (Disseny de sistema: Root)
    ========================================================================== */
 :root {
-    /* Paleta de Colors: Escala de grisos profunda (Tema Fosc per defecte) */
-    --color-fons: #0a0a0a;
-    /* Negre gairebé pur per al fons */
-    --color-text-principal: #e0e0e0;
-    /* Clar però no completament blanc, redueix fatiga visual */
-    --color-text-secundari: #888888;
-    /* Gris mitjà per a subtítols, dates i metadades */
-    --color-linies: #333333;
-    /* Molt fosc per a divisors o vores subtils */
+    /* Paleta de Colors: Mode Clar */
+    --color-fons: #f9f9f9;
+    /* Fons clar molt suau (no 100% blanc per evitar fatiga) */
+    --color-text-principal: #1a1a1a;
+    /* Negre suau per al text principal */
+    --color-text-secundari: #666666;
+    /* Gris fosc per a subtítols i metadades */
+    --color-linies: #e0e0e0;
+    /* Gris clar per a divisors o vores subtils */
 
     /* Tipografies */
     /* Lletra per a menús, UI i cos de text (Geomètrica i neta) */
@@ -102,11 +102,11 @@ svg {
     z-index: 100;
 
     /* UX: Fons lleugerament translúcid amb filtre de difuminat (blur) perquè el text no es barregi amb el fons en fer scroll */
-    background-color: rgba(10, 10, 10, 0.85);
+    background-color: rgba(249, 249, 249, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     /* Suport per a Safari */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--color-linies);
 }
 
 .tornar-inici a {
@@ -187,8 +187,9 @@ svg {
     transform: translateY(-10px);
     transition: var(--transicio-suau);
 
-    background-color: rgba(10, 10, 10, 0.9);
+    background-color: rgba(249, 249, 249, 0.9);
     backdrop-filter: blur(5px);
+    border: 1px solid var(--color-linies);
     min-width: 150px;
     border-radius: 4px;
     padding: var(--espai-s);
@@ -545,7 +546,7 @@ main,
 
 .titol-hub {
     font-family: 'Gloock', serif;
-    color: #FFF8F1;
+    color: var(--color-text-principal);
     text-align: center;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 400;
@@ -868,7 +869,7 @@ main,
     padding-bottom: 2rem;
     z-index: 10;
     background-color: transparent;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--color-linies);
 }
 
 .peu-pagina p {
