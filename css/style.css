@@ -149,6 +149,12 @@ svg {
     opacity: 1;
 }
 
+.navegacio-principal a.actiu,
+.etiqueta-menu.actiu {
+    font-weight: 600;
+    color: #000000;
+}
+
 .navegacio-principal a::after,
 .etiqueta-menu::after {
     content: '';
@@ -498,7 +504,7 @@ main,
 
 .llista-subcategories a:hover,
 .llista-subcategories a.actiu {
-    color: #FFF8F1 !important;
+    color: var(--color-text-principal) !important;
     font-weight: 600 !important;
 }
 
@@ -620,7 +626,8 @@ main,
 .hub-card span {
     font-family: 'Gloock', serif;
     font-size: clamp(1.5rem, 2.5vw, 2rem);
-    color: #FFF8F1;
+    color: #ffffff;
+    font-weight: 500;
     position: relative;
     z-index: 2;
     text-align: center;
@@ -634,7 +641,7 @@ main,
 }
 
 .hub-card:hover::before {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 /* GRAELLA MASONRY AMB CSS COLUMNS */
@@ -747,23 +754,20 @@ main,
     margin-top: var(--espai-m);
     padding: var(--espai-s) var(--espai-m);
     background-color: transparent;
-    /* Boto transparent estil fosc */
-    color: #FFF8F1;
+    color: var(--color-text-principal);
     font-family: var(--font-ui);
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border: 1px solid #FFF8F1;
-    /* Vora crema */
+    border: 1px solid var(--color-text-principal);
     transition: var(--transicio-suau);
     cursor: pointer;
     align-self: flex-start;
 }
 
 .boto-primari:hover {
-    background-color: #FFF8F1;
-    color: #1a1a1a;
-    /* En fer hover, text fosc sobre fons crema clar */
+    background-color: var(--color-text-principal);
+    color: var(--color-fons);
 }
 
 .sobre-mi-imatge {
@@ -829,7 +833,7 @@ main,
     width: 100%;
     padding: var(--espai-s);
     background-color: transparent;
-    border: 1px solid var(--color-linies);
+    border: 1px solid var(--color-text-secundari);
     color: var(--color-text-principal);
     font-family: var(--font-ui);
     font-size: 1rem;
@@ -840,8 +844,8 @@ main,
 .grup-form select:focus,
 .grup-form textarea:focus {
     outline: none;
-    border-color: var(--color-text-secundari);
-    background-color: rgba(255, 255, 255, 0.02);
+    border-color: var(--color-text-principal);
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 .grup-form input:focus:invalid,
