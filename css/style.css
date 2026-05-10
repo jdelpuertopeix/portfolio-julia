@@ -741,97 +741,104 @@ main,
     width: 100%;
 }
 
-/* SOBRE MI - Minimalisme Fosc */
-.sobre-mi-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-    max-width: 1100px;
-    margin: 4rem auto;
-    background-color: transparent;
-    min-height: calc(100vh - 250px);
+/* SOBRE MI - Editorial Split Layout */
+.about-container {
+    display: flex;
+    flex-direction: row; /* Sobrescrivim el column de main */
+    min-height: 100vh;
+    width: 100%;
 }
 
-.sobre-mi-text {
-    color: var(--color-text-principal);
+.about-image-col {
+    flex: 0 0 50%;
+    /* Mantenim a l'esquerra meitat de la pantalla */
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.about-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 80%;
+    /* 80% ajuda a prioritzar la cara a baix si la imatge és molt vertical */
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.8s ease;
+}
+
+.about-image-col:hover img {
+    filter: grayscale(0%);
+}
+
+.about-content-col {
+    flex: 0 0 50%;
+    background-color: #ffffff;
+    padding: 15vh 10vw 10vh 8vw;
+    /* Molt padding asimètric per donar espai editorial, ajustant per al header fixat */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 100vh;
 }
 
-.titol-sobre-mi,
-.subtitol-biografia {
-    font-family: "Gloock", serif;
-    font-weight: 400;
-    font-style: normal;
-    color: var(--color-text-principal);
+.sobre-mi-text {
+    max-width: 600px;
 }
 
 .titol-sobre-mi {
-    font-size: 3.5rem;
-    /* Equivalent a 56px */
+    font-family: "Gloock", serif;
+    font-weight: 400;
+    font-size: 4rem;
     margin-bottom: var(--espai-xs);
     letter-spacing: 0.02em;
+    color: var(--color-text-principal);
 }
 
 .subtitol-biografia {
+    font-family: "Gloock", serif;
+    font-weight: 400;
     font-size: 1.625rem;
-    /* Equivalent a 26px */
-    margin-bottom: var(--espai-m);
+    margin-bottom: var(--espai-l);
+    color: var(--color-text-secundari);
 }
 
 .sobre-mi-text p {
-    color: var(--color-text-secundari);
+    color: var(--color-text-principal);
     font-family: var(--font-ui);
     font-size: 1.05rem;
     line-height: 1.8;
-    margin-bottom: var(--espai-s);
+    margin-bottom: var(--espai-m);
+    font-weight: 300;
 }
 
-.boto-primari {
-    display: inline-block;
+.boto-minimal-apple {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-top: var(--espai-m);
-    padding: var(--espai-s) var(--espai-m);
-    background-color: transparent;
+    padding: 12px 24px;
+    background-color: rgba(0, 0, 0, 0.03);
     color: var(--color-text-principal);
     font-family: var(--font-ui);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 1px solid var(--color-text-principal);
-    transition: var(--transicio-suau);
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    /* Arrodoniment Apple */
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     cursor: pointer;
     align-self: flex-start;
 }
 
-.boto-primari:hover {
-    background-color: var(--color-text-principal);
-    color: var(--color-fons);
-}
-
-.sobre-mi-imatge {
-    width: 100%;
-    height: 100%;
-    /* El Grid farà que agafi l'alçada de la columna del text com a referència */
-    display: flex;
-    align-items: center;
-}
-
-.sobre-mi-imatge img {
-    width: 100%;
-    height: 100%;
-    /* Mínim per assegurar que es veu elegant al centre si el text és curt */
-    min-height: 60vh;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    filter: grayscale(100%);
-    transition: var(--transicio-suau);
-}
-
-.sobre-mi-imatge:hover img {
-    filter: grayscale(0%);
+.boto-minimal-apple:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+    border-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.02);
 }
 
 /* CONTACTE */
@@ -1078,36 +1085,39 @@ main,
         font-size: 2rem;
     }
 
-    /* 4. PÀGINA 'SOBRE MI' */
-    .sobre-mi-card {
-        grid-template-columns: 1fr;
-        /* Una sola columna vertical */
-        gap: 2rem;
-        /* Reduïm l'espai entre foto i text de 5rem a 2rem */
-        margin: 2rem auto;
-    }
-
-    /* Canviem l'ordre visual dels elements del DOM sense tocar l'HTML! */
-    .sobre-mi-imatge {
-        order: 2;
-        /* Com a Flex i Grid, la imatge a sota */
-    }
-
-    .sobre-mi-imatge img {
+    /* 4. PÀGINA 'SOBRE MI' - Editorial Responsive */
+    .about-container {
+        flex-direction: column;
         min-height: auto;
-        max-height: none;
+    }
+
+    .about-image-col {
+        flex: none;
         width: 100%;
-        object-fit: cover;
+        height: 50vh;
+        /* Alçada fixa al mòbil perquè no ocupi tota la pantalla i amagui el text */
+        position: relative;
+    }
+
+    .about-image-col img {
+        object-position: 50% 70%;
+        /* Retoc de la posició Y al mòbil per assegurar que es vegi la cara en espai limitat */
+    }
+
+    .about-content-col {
+        flex: none;
+        width: 100%;
+        padding: var(--espai-m) var(--espai-s);
+        min-height: auto;
     }
 
     .titol-sobre-mi {
-        font-size: 40px;
-        /* Mida proporcional a la portada */
+        font-size: 2.5rem;
     }
 
-    .sobre-mi-text {
-        order: 1;
-        padding: 0 var(--espai-xs);
+    .subtitol-biografia {
+        font-size: 1.3rem;
+        margin-bottom: var(--espai-m);
     }
 
     /* 5. FOOTER */
