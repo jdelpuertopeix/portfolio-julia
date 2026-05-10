@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoria = params.get('categoria');
     const album = params.get('album');
 
-    // 2. Control d'estat a la Sidebar (Ressaltar l'enllaç actiu)
-    mostrarCategoriaActivaSidebar(categoria, album);
+    // 2. Control d'estat a la Navegació (Ressaltar l'enllaç actiu)
+    mostrarCategoriaActivaMenu(categoria, album);
 
     // 3. Modificar els títols de la pàgina
     prepararTitolsSeccio(categoria, album);
@@ -31,30 +31,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Funció per afegir la classe 'actiu' a l'enllaç del menú lateral que toca per saber on ets.
+ * Funció per afegir la classe 'actiu' a l'enllaç del menú que toca per saber on ets.
  */
-function mostrarCategoriaActivaSidebar(categoria, album) {
+function mostrarCategoriaActivaMenu(categoria, album) {
     if (!categoria) return; // Si algú entra a /galeria.html net, no fem res especial d'entrada
 
     // Traiem qualsevol rastre d'actiu anterior
-    document.querySelectorAll('.sidebar-categories .actiu').forEach(el => el.classList.remove('actiu'));
+    document.querySelectorAll('.navegacio-horitzontal .actiu').forEach(el => el.classList.remove('actiu'));
 
     if (album) {
         // Estem dins d'un àlbum específic. 
-        const enllacAlbum = document.querySelector(`.llista-subcategories a[href="?categoria=${categoria}&album=${album}"]`);
+        const enllacAlbum = document.querySelector(`.navegacio-horitzontal .submenu a[href="?categoria=${categoria}&album=${album}"]`);
 
         if (enllacAlbum) {
             enllacAlbum.classList.add('actiu');
-            const liPare = enllacAlbum.closest('.categoria-pare');
-            if (liPare) liPare.classList.add('actiu');
+            const liPare = enllacAlbum.closest('.element-amb-submenu');
+            if (liPare) {
+                const enllacPare = liPare.querySelector('.enllac-horitzontal');
+                if (enllacPare) enllacPare.classList.add('actiu');
+            }
         }
     } else {
         // Estem només a la categoria principal.
-        const enllacCategoria = document.querySelector(`.categoria-pare a[href="?categoria=${categoria}"]`);
+        const enllacCategoria = document.querySelector(`.navegacio-horitzontal .element-amb-submenu a[href="?categoria=${categoria}"]`);
 
         if (enllacCategoria) {
-            const liPare = enllacCategoria.closest('.categoria-pare');
-            if (liPare) liPare.classList.add('actiu');
+            enllacCategoria.classList.add('actiu');
         }
     }
 }
@@ -118,14 +120,14 @@ function prepararTitolsSeccio(categoria, album) {
     const titolPestanya = document.querySelector('title');
     const hubContainer = document.getElementById('hub-container');
     const capcaleraGaleria = document.getElementById('capcalera-galeria');
-    const sidebar = document.querySelector('.sidebar-categories');
+    const navegacioCategories = document.getElementById('navegacio-categories');
     const layoutGaleria = document.querySelector('.layout-galeria');
 
     // Cas per defecte (Vista principal del Hub)
     if (!categoria || !TítolsGaleria[categoria]) {
         if (capcaleraGaleria) capcaleraGaleria.style.display = 'none';
         if (hubContainer) hubContainer.style.display = 'flex';
-        if (sidebar) sidebar.style.display = 'none';
+        if (navegacioCategories) navegacioCategories.style.display = 'none';
         if (layoutGaleria) layoutGaleria.classList.add('is-hub');
         return;
     }
@@ -133,14 +135,7 @@ function prepararTitolsSeccio(categoria, album) {
     // Mode Àlbum (Ocultem Hub i recuperem galeria)
     if (hubContainer) hubContainer.style.display = 'none';
     if (capcaleraGaleria) capcaleraGaleria.style.display = 'block';
-    if (sidebar) {
-        sidebar.style.display = 'block';
-        // Garantir que el <details> estigui obert en escriptori on el summary pot fallar
-        if (window.innerWidth > 768) {
-            const detailsElement = document.querySelector('.menu-mobil');
-            if (detailsElement) detailsElement.setAttribute('open', '');
-        }
-    }
+    if (navegacioCategories) navegacioCategories.style.display = 'block';
     if (layoutGaleria) layoutGaleria.classList.remove('is-hub');
 
     const dadesCat = TítolsGaleria[categoria];
@@ -253,6 +248,11 @@ async function carregarImatges(categoria, album) {
             };
 
             img.src = urlReal;
+            
+            // LIGHTBOX: Obre la imatge en fer clic
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => obrirLightbox(urlReal));
+
             elementFoto.appendChild(img);
             graellaHTML.appendChild(elementFoto);
         });
@@ -262,3 +262,56 @@ async function carregarImatges(categoria, album) {
         console.error("💥 Error crític executant la funció:", err);
     }
 }
+
+// ==========================================================================
+//   LIGHTBOX LOGIC
+// ==========================================================================
+
+function obrirLightbox(urlImatge) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    if (lightbox && lightboxImg) {
+        lightboxImg.src = urlImatge;
+        lightbox.classList.add('actiu');
+        document.body.style.overflow = 'hidden'; // Evita scroll de fons
+    }
+}
+
+function tancarLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    if (lightbox) {
+        lightbox.classList.remove('actiu');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            if (lightboxImg) lightboxImg.src = '';
+        }, 400); // Neteja la imatge un cop acabada la transició
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const btnTancar = document.getElementById('lightbox-tancar');
+
+    if (btnTancar) {
+        btnTancar.addEventListener('click', tancarLightbox);
+    }
+
+    if (lightbox) {
+        // Tancar en fer clic fora de la imatge
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === document.querySelector('.lightbox-contingut')) {
+                tancarLightbox();
+            }
+        });
+    }
+
+    // Tancar amb la tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox && lightbox.classList.contains('actiu')) {
+            tancarLightbox();
+        }
+    });
+});

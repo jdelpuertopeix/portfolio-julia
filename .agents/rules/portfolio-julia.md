@@ -11,6 +11,7 @@ trigger: always_on
 
 El portfoli haurà de poder gestionar (ja sigui des de codi fix o una base de dades) l'estructura que l'autora fa servir per classificar el seu art:
 
+- **Navegació de Categories:** S'elimina completament el menú lateral (sidebar) a la galeria per prioritzar la immersió. La navegació de categories serà a través d'un menú minimalista superior o desplegable que no distregui de les imatges.
 - **Categories principals:** Analògic (Monocrom vs Color) / De Viatge / El dia a dia / Col·laboracions / Sobre mi / Contacte
 - **Secció nova de programació:** S'ha d'afegir una nova secció dedicada a la meva feina i projectes com a programadora junior que expliqui la meva passió per la tecnologia i el meu aprenentatge continu. Per a començar, s'afegirà a "Sobre mi" amb l'enlaç al Github.
 - **Sobre les fotografies:** Actualment, les pàgines de galeria només mostren imatges. A la nova web s'ha d'afegir un text personalitzat que expliqui el context de cada galeria.
@@ -49,10 +50,11 @@ La jerarquia de la base de dades seguirà aquest arbre:
 
 # DIRECTRIUS ESTÈTIQUES I UI/UX (Design System)
 
-- **Minimalisme Extrem:** L'espai en blanc (o espai negre) és tan important com la foto. Res de caixes, ombres dures o colors estridents que distreguin la vista.
-- **Paleta de Colors:** Escala de grisos profunda. Fons pur (blanc `#FFFFFF` o negre `#0A0A0A`) i el text en el seu contrast més suau (ex. `#1A1A1A` sobre blanc, o `#E0E0E0` sobre negre).
+- **Estil Apple (Light Mode) i Immersió:** El disseny se centra en un "Light Mode" d'estètica Apple: extremadament net, espaiós i immersiu.
+- **Minimalisme Extrem i Sense Línies:** L'espai en blanc i la tipografia neta actuen com els únics separadors. Elimina totes les línies de divisió (`borders`) de capçaleres, peus de pàgina i menús per evitar caixes dures o talls innecessaris.
+- **Paleta de Colors:** Escala de grisos profunda sobre fons clar. Fons pur (blanc `#FFFFFF` o gris suau `#F9F9F9`) i el text en el seu contrast elegant (ex. `#1A1A1A` o `#666666`).
 - **Tipografia:** Elegància editorial. Utilitza una tipografia Sans-Serif neta i geomètrica per a la navegació (com _Inter_ o _Geist_), i una Serif clàssica i estilitzada per als títols dels projectes fotogràfics (com _Playfair Display_ o _Cormorant_).
-- **Layout de les Imatges:** Fes servir graelles tipus "Masonry" (estil Pinterest) on les fotos mantenen la seva proporció horitzontal/vertical sense ser retallades en quadrats lletjos.
+- **Layout de les Imatges (Full Width):** La graella de fotos ha d'ocupar tot l'ample de la pantalla sense sidebars que la limitin. Fes servir graelles tipus "Masonry" (estil Pinterest) on les fotos mantenen la seva proporció horitzontal/vertical sense ser retallades en quadrats lletjos.
 - **Interaccions Micro:** - Fosos (fade-ins) suaus en aparèixer les imatges a l'hora de fer scroll.
   - Al passar el ratolí (hover) sobre una miniatura, aquesta pot fer un petit augment d'escala molt subtil (ex: `scale: 1.02`) o una revelació del títol.
 
@@ -79,10 +81,7 @@ Tot i ser un portfoli, complirem amb les regles de seguretat globals del `GEMINI
 - **Codi net:** Escriu codi ben estructurat i amb comentaris HTML/CSS que m'ajudin a entendre què fa cada bloc.
 - **Ús d'eines autònomes:** Fes servir el teu navegador integrat de manera proactiva per visualitzar els canvis i assegurar-te que l'estètica visual respecta el disseny de les captures que tenim al projecte.
 - **Treball pas a pas:** Evita fer canvis massius a múltiples arxius alhora. Avancem secció per secció perquè jo pugui revisar, entendre i aprovar cada pas abans de continuar.
-
-# FLUX DE TREBALL DE GIT
-
-1. Treballar en la tasca assignada pas a pas.
-2. Després de cada millora visual o funcional validada, fer un commit amb un missatge descriptiu (preferiblement en anglès).
-3. Immediatament després del commit, fer un push a la branca main del repositori remot.
-4. Mantenir sempre el perfil de GitHub actiu amb aquests commits.
+- **Flux de treball de Git (Sincronització constant):**
+  - Després de cada tasca completada i validada visualment, l'agent ha de realitzar un **commit** descriptiu (preferiblement en anglès) que resumeixi els canvis.
+  - Immediatament després, ha d'executar un **push** a la branca `main` per assegurar que el progrés estigui sempre salvat a GitHub.
+  - L'objectiu és mantenir un historial de versions net i un perfil de GitHub actiu.
