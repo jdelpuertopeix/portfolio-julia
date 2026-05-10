@@ -689,10 +689,8 @@ main,
 
 /* GRAELLA MASONRY AMB CSS COLUMNS */
 .graella-masonry {
-    column-count: 2;
-    /* Passem de 3 a 2 columnes per fer-les créixer! */
-    column-gap: 2.5rem;
-    /* Augmentem l'espai perquè hi hagi més 'aire' entre fotos grosses */
+    column-count: 4;
+    column-gap: 1.5rem;
     width: 100%;
     min-height: 60vh;
 }
@@ -705,8 +703,7 @@ main,
 
 .item-masonry {
     break-inside: avoid;
-    margin-bottom: 2.5rem;
-    /* Espaiat vertical idèntic al gap */
+    margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
     border-radius: 4px;
@@ -929,9 +926,8 @@ main,
    ========================================================================== */
 @media (max-width: 1024px) {
     .graella-masonry {
-        column-count: 2;
+        column-count: 3;
         column-gap: 1.5rem;
-        /* Reduïm una mica el gap en pantalles més petites */
     }
 
     .item-masonry {
@@ -1070,8 +1066,12 @@ main,
     }
 
     .graella-masonry {
-        column-count: 1;
-        /* Fotos a mida completa (1 per fila) per admirar-les al mòbil */
+        column-count: 2;
+        column-gap: 1rem;
+    }
+    
+    .item-masonry {
+        margin-bottom: 1rem;
     }
 
     .titol-seccio {
