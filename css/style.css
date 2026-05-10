@@ -794,16 +794,16 @@ main,
 }
 
 .titol-sobre-mi {
-    font-family: "Gloock", serif;
-    font-weight: 400;
-    font-size: 4rem;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    font-size: 4.5rem;
     margin-bottom: var(--espai-xs);
     letter-spacing: 0.02em;
     color: var(--color-text-principal);
 }
 
 .subtitol-biografia {
-    font-family: "Gloock", serif;
+    font-family: "Playfair Display", serif;
     font-weight: 400;
     font-size: 1.625rem;
     margin-bottom: var(--espai-l);
@@ -814,7 +814,7 @@ main,
     color: var(--color-text-principal);
     font-family: var(--font-ui);
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.6;
     margin-bottom: var(--espai-m);
     font-weight: 300;
 }
@@ -824,15 +824,15 @@ main,
     align-items: center;
     justify-content: center;
     margin-top: var(--espai-m);
-    padding: 12px 24px;
+    padding: 16px 36px;
     background-color: #ffffff;
     color: var(--color-text-principal);
     font-family: var(--font-ui);
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
-    letter-spacing: 0.02em;
-    border: 1px solid var(--color-text-principal);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid #1a1a1a;
     border-radius: 40px;
     /* Arrodoniment Apple */
     transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -1097,8 +1097,17 @@ main,
         min-height: auto;
     }
 
+    .about-content-col {
+        display: contents; /* Desempaqueta per permetre ordenar els fills a nivell del contenidor pare */
+    }
+
+    .sobre-mi-text {
+        order: 1; /* El text va primer */
+        padding: var(--espai-m) var(--espai-s);
+    }
+
     .about-image-col {
-        order: 2; /* Invertim l'ordre per posar la foto sota el text */
+        order: 2; /* La foto al mig */
         flex: none;
         width: 100%;
         height: auto;
@@ -1112,12 +1121,9 @@ main,
         margin: 0 auto;
     }
 
-    .about-content-col {
-        order: 1; /* El text va primer */
-        flex: none;
-        width: 100%;
-        padding: var(--espai-m) var(--espai-s);
-        min-height: auto;
+    .boto-minimal-apple {
+        order: 3; /* El botó sota la foto */
+        margin: 2rem auto;
     }
 
     .titol-sobre-mi {
