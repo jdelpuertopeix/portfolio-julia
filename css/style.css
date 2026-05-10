@@ -755,17 +755,25 @@ main,
     height: 100vh;
     position: sticky;
     top: 0;
+    /* Nou per centrar i donar espai */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10%; /* Efecte marc blanc generós */
+    box-sizing: border-box;
 }
 
 .about-image-col img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: 50% 80%;
-    /* 80% ajuda a prioritzar la cara a baix si la imatge és molt vertical */
+    max-height: 80vh;
+    object-fit: contain;
+    /* La imatge sencera, sense retallar-se */
     display: block;
     filter: grayscale(100%);
     transition: filter 0.8s ease;
+    box-shadow: none;
+    border: none;
 }
 
 .about-image-col:hover img {
@@ -1100,8 +1108,8 @@ main,
     }
 
     .about-image-col img {
-        object-position: 50% 70%;
-        /* Retoc de la posició Y al mòbil per assegurar que es vegi la cara en espai limitat */
+        /* L'herència d'object-fit: contain ja garanteix que es vegi tota la cara al mòbil */
+        max-height: 100%;
     }
 
     .about-content-col {
