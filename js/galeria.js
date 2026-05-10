@@ -154,6 +154,10 @@ function prepararTitolsSeccio(categoria, album) {
     titolPestanya.textContent = `Júlia del Puerto Peix | ${titolFinal}`;
 }
 
+// Estat global per la navegació del Lightbox
+let imatgesActuals = [];
+let indexImatgeActual = 0;
+
 /**
  * Funció principal per connectar amb Supabase Storage i descarregar les fotos corresponents a l'àlbum que estem mirant.
  */
@@ -215,6 +219,7 @@ async function carregarImatges(categoria, album) {
 
         // 4. Netegem el contenidor per si de cas (esborrem fotos anteriors abans d'afegir les noves)
         graellaHTML.innerHTML = '';
+        imatgesActuals = [];
 
         // 5. Creem l'HTML per cada foto i l'afegim a la graella
         arxiusSencers.forEach((foto, índex) => {
@@ -248,10 +253,10 @@ async function carregarImatges(categoria, album) {
             };
 
             img.src = urlReal;
-            
-            // LIGHTBOX: Obre la imatge en fer clic
-            img.style.cursor = 'zoom-in';
-            img.addEventListener('click', () => obrirLightbox(urlReal));
+            // LIGHTBOX: Guardem la URL a l'estat global i afegim esdeveniment
+            imatgesActuals.push(urlReal);
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => obrirLightbox(índex));
 
             elementFoto.appendChild(img);
             graellaHTML.appendChild(elementFoto);
@@ -267,14 +272,33 @@ async function carregarImatges(categoria, album) {
 //   LIGHTBOX LOGIC
 // ==========================================================================
 
-function obrirLightbox(urlImatge) {
+function obrirLightbox(index) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     
-    if (lightbox && lightboxImg) {
-        lightboxImg.src = urlImatge;
+    if (lightbox && lightboxImg && imatgesActuals.length > 0) {
+        indexImatgeActual = index;
+        lightboxImg.src = imatgesActuals[indexImatgeActual];
         lightbox.classList.add('actiu');
         document.body.style.overflow = 'hidden'; // Evita scroll de fons
+    }
+}
+
+function navegarLightbox(direccio) {
+    if (imatgesActuals.length === 0) return;
+    
+    indexImatgeActual += direccio;
+    
+    // Navegació circular (looping)
+    if (indexImatgeActual >= imatgesActuals.length) {
+        indexImatgeActual = 0;
+    } else if (indexImatgeActual < 0) {
+        indexImatgeActual = imatgesActuals.length - 1;
+    }
+    
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (lightboxImg) {
+        lightboxImg.src = imatgesActuals[indexImatgeActual];
     }
 }
 
@@ -294,9 +318,25 @@ function tancarLightbox() {
 document.addEventListener('DOMContentLoaded', () => {
     const lightbox = document.getElementById('lightbox');
     const btnTancar = document.getElementById('lightbox-tancar');
+    const btnPrev = document.getElementById('lightbox-prev');
+    const btnNext = document.getElementById('lightbox-next');
 
     if (btnTancar) {
         btnTancar.addEventListener('click', tancarLightbox);
+    }
+    
+    if (btnPrev) {
+        btnPrev.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evitar que es tanqui el lightbox
+            navegarLightbox(-1);
+        });
+    }
+    
+    if (btnNext) {
+        btnNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navegarLightbox(1);
+        });
     }
 
     if (lightbox) {
@@ -308,10 +348,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tancar amb la tecla Escape
+    // Navegació per teclat
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox && lightbox.classList.contains('actiu')) {
-            tancarLightbox();
+        if (lightbox && lightbox.classList.contains('actiu')) {
+            if (e.key === 'Escape') {
+                tancarLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                navegarLightbox(-1);
+            } else if (e.key === 'ArrowRight') {
+                navegarLightbox(1);
+            }
         }
     });
 });

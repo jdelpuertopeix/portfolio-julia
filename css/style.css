@@ -527,6 +527,36 @@ main,
     transform: scale(1.1);
 }
 
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    font-family: "Inter", sans-serif;
+    color: var(--color-text-principal);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: var(--espai-m);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5;
+    user-select: none;
+}
+
+.lightbox-nav:hover {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+}
+
+.lightbox-prev {
+    left: var(--espai-s);
+}
+
+.lightbox-next {
+    right: var(--espai-s);
+}
+
 /* ==========================================================================
    CONTINGUT GALERIA (Títols i Masonry)
    ========================================================================== */
